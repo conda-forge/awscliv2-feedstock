@@ -6,29 +6,38 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/vemel/awscliv2/archive/{{ version }}.tar.gz
-  sha256: 137026377a7cd0c331eac1776251a6a5bfc0535dc9b8da89d7790d1ff1368ac0
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/awscliv2-{{ version }}.tar.gz
+  sha256: 9c2cb03d599859c66f5db9588c20be2743cdabdf52968269727dfb495b37f5a4
 
 build:
-  number: 0
-  noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
   entry_points:
     - awscliv2 = awscliv2.main:main_cli
     - awsv2 = awscliv2.main:main_cli
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
 
 requirements:
   build:
   host:
-    - python >=3.6
+    - python >=3.6,<4.0
     - pip
+    - poetry-core >=1.0.0
   run:
-    - python >=3.6
+    - python >=3.6,<4.0
+  run:
+    - executor
+    - importlib-resources
 
 test:
+  imports:
+    - awscliv2
   commands:
-    - awscliv2 -h
-    - awsv2 -h
+    - pip check
+    - awscliv2 --help
+    - awsv2 --help
+  requires:
+    - pip
 
 about:
   home: https://github.com/vemel/awscliv2
