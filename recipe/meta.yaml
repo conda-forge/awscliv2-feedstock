@@ -1,5 +1,5 @@
 {% set name = "awscliv2" %}
-{% set version = "2.1.1" %}
+{% set version = "2.3.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/awscliv2-{{ version }}.tar.gz
-  sha256: 9c2cb03d599859c66f5db9588c20be2743cdabdf52968269727dfb495b37f5a4
+  sha256: 508617da0f9cd72ab2707ce9366bbd05c7cb2328f668a6f23ef1e73a06d423d7
 
 build:
   entry_points:
@@ -15,7 +15,7 @@ build:
     - awsv2 = awscliv2.main:main_cli
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
-  number: 1
+  number: 0
 
 requirements:
   build:
