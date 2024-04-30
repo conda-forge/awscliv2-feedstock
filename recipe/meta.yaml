@@ -14,19 +14,18 @@ build:
     - awscliv2 = awscliv2.main:main_cli
     - awsv2 = awscliv2.main:main_cli
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
 
 requirements:
   build:
   host:
-    - python >=3.6,<4.0
+    - python >=3.7,<4.0
     - pip
     - poetry-core >=1.0.0
   run:
-    - python >=3.6,<4.0
-    - executor
-    - importlib-resources
+    - python >=3.7,<4.0
+    - importlib-metadata
 
 test:
   imports:
