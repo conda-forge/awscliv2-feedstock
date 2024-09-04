@@ -1,5 +1,5 @@
 {% set name = "awscliv2" %}
-{% set version = "2.3.0" %}
+{% set version = "2.3.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/awscliv2-{{ version }}.tar.gz
-  sha256: 508617da0f9cd72ab2707ce9366bbd05c7cb2328f668a6f23ef1e73a06d423d7
+  sha256: 5fbbf104bcd7796b7af104bd6af99f6e153208883399aeff830d97b3ea34f7ae
 
 build:
   entry_points:
@@ -24,6 +24,7 @@ requirements:
     - pip
     - poetry-core >=1.0.0
   run:
+    - pip
     - python >=3.7,<4.0
     - importlib-metadata
 
